@@ -8,9 +8,9 @@ import scrapy
 
 class AnimeDataItem(scrapy.Item):
     # define the fields for your item here like:
-    name = scrapy.Field()
-    play=scrapy.Field()
-    fllow=scrapy.Field()
-    barrage=scrapy.Field()
-    tags=scrapy.Field()
+    name = scrapy.Field()   #番剧名称
+    play=scrapy.Field()     #总播放量
+    follow=scrapy.Field()    #追番人数
+    barrage=scrapy.Field()  #弹幕数量
+    tags=scrapy.Field()     #番剧标签，列表形式
     pass
