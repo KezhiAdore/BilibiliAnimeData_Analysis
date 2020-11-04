@@ -7,6 +7,8 @@ df = pd.read_csv(filepath)
 tags = df['tags'].to_list()
 
 # 将逗号分割的字符串以逗号为分隔符转换成列表
+
+
 def str_to_list(str_data):
     for index, data in enumerate(str_data):
         tmp, start, end = [], 0, 0
@@ -21,12 +23,14 @@ def str_to_list(str_data):
         str_data[index] = tmp
 
 # Apriori算法连接步 单步实现
+
+
 def merge_list(l1, l2):
     length = len(l1)
     for i in range(length-1):
         if l1[i] != l2[i]:
             return 'nope'
-    if l1[-1] < l2[-1]:
+    if l1[-1] != l2[-1]:
         l = l1.copy()
         l.append(l2[-1])
         return l
@@ -34,6 +38,8 @@ def merge_list(l1, l2):
         return 'nope'
 
 # 判断l2是否包含在l1中
+
+
 def is_exist(l1, l2):
     for i in l2:
         if i not in l1:
@@ -41,6 +47,8 @@ def is_exist(l1, l2):
     return True
 
 # 利用min_sup和min_conf进行剪枝,即最小支持度和最小置信度,L_last为k-1项频繁集
+
+
 def prune(L=[], L_last=0, min_sup=0, min_conf=0):
     tmp_L = []
     if L_last == 0 or min_conf == 0:
@@ -75,7 +83,7 @@ def Apriori(data, min_sup, min_conf):
         for tags in data:
             if is_exist(tags, l[0]):
                 L[index][1] += 1
-    L = prune(L, min_sup=min_sup)
+    L = prune(L, min_sup=min_sup_count)
     L_save.append(L)
     while True:
         # 由频繁k-1项集构造k项集
@@ -91,7 +99,7 @@ def Apriori(data, min_sup, min_conf):
             for tags in data:
                 if is_exist(tags, l[0]):
                     L[index][1] += 1
-        L = prune(L, L_save[-1], min_sup, min_conf)
+        L = prune(L, L_save[-1], min_sup_count, min_conf)
         # L=空集时结束循环
         if L == []:
             return L_save
@@ -99,7 +107,7 @@ def Apriori(data, min_sup, min_conf):
 
 
 str_to_list(tags)
-ans = Apriori(tags, 20, 0.4)
+ans = Apriori(tags, 0.02, 0.5)
 
 # 只输出最多的频繁项
 for i in ans[-1]:
