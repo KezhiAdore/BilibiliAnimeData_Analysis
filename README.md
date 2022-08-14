@@ -1,7 +1,7 @@
 # B站番剧数据分析
 
  对B站番剧播放数据和tags进行APriori频繁项集挖掘
- 相关文章: [https://www.kezhi.tech/爬取B站所有番剧数据并进行数据分析/](https://www.kezhi.tech/%E7%88%AC%E5%8F%96B%E7%AB%99%E6%89%80%E6%9C%89%E7%95%AA%E5%89%A7%E6%95%B0%E6%8D%AE%E5%B9%B6%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/)
+ 相关文章: [https://www.kezhi.tech/6b2dc3cb.html](https://www.kezhi.tech/6b2dc3cb.html)
 
 ## 1. 数据收集
 
